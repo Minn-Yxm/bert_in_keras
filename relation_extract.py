@@ -340,7 +340,7 @@ class Evaluate(Callback):
         self.F1.append(f1)
         if f1 > self.best:
             self.best = f1
-            train_model.save_weights('best_model.weights')
+            train_model.save_weights('../model/best_model.weights')
         print 'f1: %.4f, precision: %.4f, recall: %.4f, best f1: %.4f\n' % (f1, precision, recall, self.best)
     def evaluate(self):
         orders = ['subject', 'predicate', 'object']
