@@ -54,16 +54,16 @@ total_data.extend(train_data)
 total_data.extend(dev_data)
 
 
-if not os.path.exists('../random_order_train_dev.json'):
+if not os.path.exists('./random_order_train_dev.json'):
     random_order = range(len(total_data))
     np.random.shuffle(random_order)
     json.dump(
         random_order,
-        open('../random_order_train_dev.json', 'w'),
+        open('./random_order_train_dev.json', 'w'),
         indent=4
     )
 else:
-    random_order = json.load(open('../random_order_train_dev.json'))
+    random_order = json.load(open('./random_order_train_dev.json'))
 
 
 train_data = [total_data[j] for i, j in enumerate(random_order) if i % 8 != mode]
@@ -400,4 +400,4 @@ if __name__ == '__main__':
                               callbacks=[evaluator]
                               )
 else:
-    train_model.load_weights('best_model.weights')
+    train_model.load_weights('../model/best_model.weights')
